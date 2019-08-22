@@ -1,10 +1,11 @@
 target/
 bin/
 lib/
+.idea/
 .settings/
 .checkstyle
 .classpath
 .project
 *.log
 dependency-reduced-pom.xml
-config.properties
+

@@ -70,9 +70,13 @@ public class Danmu {
         // String vk = MD5Util.MD5(timestamp +
         // "r5*^5;}2#\\${XF[h+;'./.Q'1;,-]f'p[" + uuid);// vk参数
 
-        String loginreqInfo = "type@=loginreq/username@=" + username + "/ct@=0/password@=/roomid@=" + roomID
+        String loginreqInfo1 = "type@=loginreq/username@=" + username + "/ct@=0/password@=/roomid@=" + roomID
                 + "/devid@=" + uuid + "/rt@=" + timestamp + "/vk@=" + vk + "/ver@=20150929/aver@=2017073111/ltkid@="
                 + ltkid + "/biz@=1/stk@=" + stk + "/";
+        String loginreqInfo = "type@=loginreq/roomid@=" + roomID + "/dfl@=sn@AA=105@ASss@AA=1/username@=" + username
+                + "/password@=/ltkid@=/biz@=1/stk@=/devid@=b95c14c6362cc27a7188576d00021501/ct@=0/pt@=2/rt@=/vk@=" + vk
+                + "/ver@=20180222/aver@=218101901/";
+        //"type@=loginreq/roomid@=2561707/dfl@=sn@AA=105@ASss@AA=1/username@=sdadsda/password@=/ltkid@=/biz@=1/stk@=/devid@=b95c14c6362cc27a7188576d00021501/ct@=0/pt@=2/rt@=/vk@=1989377f39fa69918f6f7c52ba23107a/ver@=20180222/aver@=218101901/"
 
         tcpSocketClientAuth.sendData(loginreqInfo);
 
@@ -85,9 +89,10 @@ public class Danmu {
     public void sendDanmu(String message) {
         message = DouyuProtocolMessage.encodeMessage(message);
         logger.info("Send message: {}", message);
-        tcpSocketClientAuth.sendData("type@=chatmessage/receiver@=0/content@=" + message
-                + "/scope@=/col@=0/pid@=/p2p@=0/nc@=0/rev@=0/ifs@=0/");
+        String data = "content@=" + message+ "/col@=0/type@=chatmessage/dy@=/sender@=376763/ifs@=0/nc@=0/rev@=0/admzq@=0/cst@=1547137729931/";
+        tcpSocketClientAuth.sendData(data);
     }
+    //"content@=111111111/col@=0/type@=chatmessage/dy@=/sender@=376763/ifs@=0/nc@=0/rev@=0/admzq@=0/cst@=1547137729931/"
 }
 
 /**
